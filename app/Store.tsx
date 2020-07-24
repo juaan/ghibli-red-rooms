@@ -6,12 +6,24 @@ export enum ActionTypes {
   GET_FILMS,
 }
 
+export const IndexColors = {
+  0: 'red.400',
+  1: 'teal.200',
+  2: 'orange.200',
+  3: 'pink.400',
+  4: 'green.200',
+  5: 'purple.200',
+  6: 'yellow.200',
+  7: 'green.200',
+};
+
 export interface FilmType {
   id: string;
   title: string;
   description: string;
   director: string;
   rt_score: string;
+  release_date: string;
 }
 
 export interface FilmsPayload {

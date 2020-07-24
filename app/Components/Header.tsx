@@ -1,18 +1,43 @@
-import React from 'react';
-import { Box, Heading, Flex, Text, Button } from '@chakra-ui/core';
+import React, { FunctionComponent } from 'react';
+import { Box, Heading, Flex, Input } from '@chakra-ui/core';
 
-const Header = () => {
-  <Flex
-    as="nav"
-    align="center"
-    justify="space-between"
-    wrap="wrap"
-    bg="gray.600"
-  >
-    <Flex align="center" mr={5}>
-      <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
-        Chakra UI
-      </Heading>
+const Header: FunctionComponent<{}> = ({}) => {
+  return (
+    <Flex
+      as="nav"
+      justify="space-around"
+      padding="8px"
+      bg="gray.800"
+      align="center"
+    >
+      <Flex wrap="wrap" w="100px" padding="8px">
+        <Heading
+          as="h3"
+          size="md"
+          letterSpacing={'-.1rem'}
+          color="red.400"
+          margin="0"
+        >
+          Ghibli Red Rooms
+        </Heading>
+      </Flex>
+
+      <Box
+        display={{ sm: 'block', md: 'flex' }}
+        width={{ sm: 'auto', md: 'auto' }}
+        alignItems="center"
+        flexGrow={1}
+        paddingRight="8px"
+      >
+        <Input
+          placeholder="Find Gibhli Movie"
+          isFullWidth
+          size="sm"
+          focusBorderColor="orange.200"
+        />
+      </Box>
     </Flex>
-  </Flex>;
+  );
 };
+
+export default Header;

@@ -1,7 +1,31 @@
-$bgcolor: lightblue;
+$bgcolor: #1a202c;
 
 body {
-    max-width: 960px;
-    margin: 0 auto;
-    background-color: $bgcolor;
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: $bgcolor;
+}
+
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 16px;
+
+  .spinner-showing {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .film-item {
+    cursor: pointer;
+  }
+
+  .right-bar {
+    background-color: wheat;
+    border-radius: 8px;
+    height: 500px;
+  }
 }
