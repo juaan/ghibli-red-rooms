@@ -5,6 +5,7 @@ import update from 'immutability-helper';
 export enum ActionTypes {
   GET_FILMS,
   GET_PEOPLES,
+  GET_FILM,
 }
 
 export const IndexColors = {
@@ -25,6 +26,7 @@ export interface FilmType {
   director: string;
   rt_score: string;
   release_date: string;
+  producer: string;
 }
 
 export interface PeopleType {
@@ -38,6 +40,10 @@ export interface FilmsPayload {
   films: FilmType[];
 }
 
+export interface FilmPayload {
+  film: FilmType;
+}
+
 export interface PeoplesPayload {
   peoples: PeopleType[];
 }
@@ -45,9 +51,10 @@ export interface PeoplesPayload {
 const initialState = {
   films: [],
   peoples: [],
+  film: null,
 };
 
-export type ActionPayload = FilmsPayload | PeoplesPayload;
+export type ActionPayload = FilmsPayload | PeoplesPayload | FilmPayload;
 
 interface DispatchType {
   type: ActionTypes;
@@ -76,6 +83,10 @@ const reducer = (
     case ActionTypes.GET_PEOPLES:
       return update(state, {
         peoples: { $set: (payload as PeoplesPayload).peoples },
+      });
+    case ActionTypes.GET_FILM:
+      return update(state, {
+        film: { $set: (payload as FilmPayload).film },
       });
     default:
       return state;

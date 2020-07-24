@@ -67,22 +67,23 @@ const Home: FunctionComponent<{}> = ({}) => {
     <div className="home-content">
       <Box
         display={{ sm: 'block', md: 'flex' }}
-        width={{ sm: 'auto', md: '65%' }}
-        alignItems="center"
-        flexGrow={1}
-        paddingRight="8px"
-      >
-        <FilmItemList films={filmdata} loading={loading} />
-      </Box>
-      <Box
-        display={{ sm: 'block', md: 'flex' }}
         width={{ sm: 'auto', md: '30%' }}
         flexGrow={1}
         className="right-bar"
+        marginBottom="16px"
       >
         <div>
           <PeopleSection />
         </div>
+      </Box>
+      <Box
+        display={{ sm: 'block', md: 'flex' }}
+        width={{ sm: 'auto', md: '65%' }}
+        alignItems="center"
+        flexGrow={1}
+        paddingLeft={{ sm: '0', md: '8px' }}
+      >
+        <FilmItemList films={filmdata} loading={loading} />
       </Box>
     </div>
   );

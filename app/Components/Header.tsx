@@ -1,41 +1,46 @@
-import React, { FunctionComponent } from 'react';
-import { Box, Heading, Flex, Input } from '@chakra-ui/core';
+import React, { FunctionComponent, useCallback } from 'react';
+import { Heading, Flex, IconButton } from '@chakra-ui/core';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 
 const Header: FunctionComponent<{}> = ({}) => {
+  const { pathname } = useLocation();
+  const { goBack } = useHistory();
+
+  const isHome = pathname === '/';
+  const handleBack = useCallback(() => goBack && goBack(), []);
   return (
     <Flex
       as="nav"
-      justify="space-around"
+      justify="flex-start"
       padding="8px"
       bg="gray.800"
       align="center"
     >
-      <Flex wrap="wrap" w="100px" padding="8px">
-        <Heading
-          as="h3"
-          size="md"
-          letterSpacing={'-.1rem'}
-          color="red.400"
-          margin="0"
-        >
-          Ghibli Red Rooms
-        </Heading>
-      </Flex>
-
-      <Box
-        display={{ sm: 'block', md: 'flex' }}
-        width={{ sm: 'auto', md: 'auto' }}
-        alignItems="center"
-        flexGrow={1}
-        paddingRight="8px"
-      >
-        <Input
-          placeholder="Find Gibhli Movie"
-          isFullWidth
-          size="sm"
-          focusBorderColor="orange.200"
+      {!isHome && (
+        <IconButton
+          variant="outline"
+          variantColor="orange"
+          className="back-button"
+          aria-label="back"
+          icon="arrow-back"
+          w="30px"
+          onClick={handleBack}
         />
-      </Box>
+      )}
+
+      <Flex wrap="wrap" w="100%" padding="8px" justifyContent="center">
+        <Link to="/" className="header-link">
+          <Heading
+            as="h3"
+            size="md"
+            letterSpacing={'-.1rem'}
+            color="red.400"
+            margin="0"
+          >
+            Ghibli Red Rooms
+          </Heading>
+        </Link>
+      </Flex>
     </Flex>
   );
 };

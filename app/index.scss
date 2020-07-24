@@ -1,6 +1,10 @@
 $bgcolor: #1a202c;
+$nodecor: none;
 
 body {
+  a {
+    text-decoration: none;
+  }
   max-width: 960px;
   margin: 0 auto;
   background-color: $bgcolor;
@@ -30,5 +34,9 @@ body {
     display: flex;
     flex-direction: column;
     padding: 8px;
+  }
+
+  .link-item {
+    color: rgb(26, 32, 44);
   }
 }
