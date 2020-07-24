@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  useCallback,
-} from 'react';
+import React, { FunctionComponent, useEffect, useCallback } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useToast, Text, Heading, Image, Box, Flex } from '@chakra-ui/core';
@@ -17,8 +12,10 @@ interface FilmDetailProps {
 const FilmDetail: FunctionComponent<FilmDetailProps> = (
   props: FilmDetailProps,
 ) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { id } = useParams();
-  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const { state, dispatch } = useAppContext();
   const filmsState = state?.films;
@@ -37,7 +34,6 @@ const FilmDetail: FunctionComponent<FilmDetailProps> = (
   }
 
   const fetchDataFilm = useCallback(async () => {
-    setLoading(true);
     try {
       const filmResponse = await fetch(
         `https://ghibliapi.herokuapp.com/films/${id}`,
@@ -49,9 +45,7 @@ const FilmDetail: FunctionComponent<FilmDetailProps> = (
           film: data,
         },
       });
-      setLoading(false);
     } catch (err) {
-      setLoading(false);
       toast({
         title: 'Failed to load films',
         description: err.message,
@@ -67,7 +61,7 @@ const FilmDetail: FunctionComponent<FilmDetailProps> = (
   }, [id]);
 
   return (
-    <>
+    <div className="home-content">
       <Flex w="100%" margin="16px" justify="space-between" wrap="wrap">
         <Box display={{ sm: 'block', md: 'flex' }}>
           <Heading color="white" margin="0" width="100%">
@@ -92,6 +86,7 @@ const FilmDetail: FunctionComponent<FilmDetailProps> = (
           backgroundColor="white"
           padding="16px"
           borderRadius="5px"
+          marginBottom="8px"
         >
           <Box display="flex" backgroundColor="white" justifyContent="center">
             <Image
@@ -110,7 +105,7 @@ const FilmDetail: FunctionComponent<FilmDetailProps> = (
           backgroundColor="white"
           padding="16px"
           borderRadius="5px"
-          marginTop="8px"
+          marginBottom="8px"
         >
           <Box display="flex" backgroundColor="white" justifyContent="center">
             <Image
@@ -125,7 +120,7 @@ const FilmDetail: FunctionComponent<FilmDetailProps> = (
           </Text>
         </Box>
       </Flex>
-    </>
+    </div>
   );
 };
 

@@ -49,7 +49,6 @@ const Home: FunctionComponent<{}> = ({}) => {
     fetchDataFilm();
   }, [state.films.length, limit]);
 
-  //infinite scroll handling
   window.onscroll = debounce(() => {
     if (
       window.innerHeight + window.scrollY ===
