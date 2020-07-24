@@ -80,7 +80,7 @@ const Home: FunctionComponent<{}> = ({}) => {
         flexGrow={1}
         className="right-bar"
       >
-        <div className="right-bar">
+        <div>
           <PeopleSection />
         </div>
       </Box>

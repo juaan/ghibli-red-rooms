@@ -26,6 +26,9 @@ body {
   .right-bar {
     background-color: wheat;
     border-radius: 8px;
-    height: 500px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
   }
 }
