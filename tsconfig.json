@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "lib": ["dom", "dom.iterable", "ES2018.Promise"],
+      "outDir": "./dist/",
+      "module": "commonjs",
+      "target": "es5",
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react",
+      "allowJs": true,
+      "sourceMap": true,
+      "isolatedModules": true,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "strict": false,
+      "esModuleInterop": true,
+    },
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ]
+}
